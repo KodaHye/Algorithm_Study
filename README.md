@@ -9,7 +9,7 @@
             <td height="140px" align="center"> <a href="https://github.com/Holdm2t1ght">
                 <img src="https://avatars.githubusercontent.com/Holdm2t1ght" width="140px" /> <br><br> 🎀 김주하 <br><br></td>
             <td height="140px" align="center"> <a href="https://github.com/sseq007">
-                <img src="https://avatars.githubusercontent.com/sseq007" width="140px" /> <br><br>  신준호 <br> <br></td>
+                <img src="https://avatars.githubusercontent.com/sseq007" width="140px" /> <br><br> 🐲 신준호 <br> <br></td>
             <td height="140px" align="center"> <a href="https://github.com/gudtjr2949">
                 <img src="https://avatars.githubusercontent.com/gudtjr2949" width="140px" /> <br><br> 🐰 이형석 <br> <br></td>
         </tr>
