@@ -65,6 +65,6 @@
 ## 커밋규칙
 
 * `feat`: 문제 풀이 올릴 때
-  * `feat: programmers 문제이름 풀이 완료 close #이슈번호`
+  * `feat: hyeongseok.programmers 문제이름 풀이 완료 close #이슈번호`
 * `refactor`: 코드 수정 시
   * `refactor: 고친내용`
