@@ -14,7 +14,7 @@ public class 기둥과_보_설치 {
 
 		for (int i = 0; i < build_frame.length; i++) {
 			int x = build_frame[i][0];
-			int y = 5 - build_frame[i][1];
+			int y = build_frame[i][1];
 			int a = build_frame[i][2];
 			int b = build_frame[i][3];
 
@@ -82,15 +82,15 @@ public class 기둥과_보_설치 {
 		boolean check = false;
 
 		if (a == 0) { // 기둥 설치
-			if (y == N || // 바닥에 설치
+			if (y == 0 || // 바닥에 설치
 				(x - 1 >= 0 && map[y][x - 1][1] != 0) || // 왼쪽 끝에 보가 있는 경우
-				(x + 1 <= N && map[y][x][1] != 0) || // 오른쪽 끝에 보가 있는 경우
+				(y - 1 >= 0 && map[y - 1][x][1] != 0) || // 오른쪽 끝에 보가 있는 경우
 				(y + 1 < N && map[y + 1][x][0] != 0)) { // 바로 밑에 기둥이 있는 경우
 				check = true;
 			}
 		} else { // 보 설치
-			if ((y + 1 < N && map[y + 1][x][0] != 0) || // 왼쪽 끝에 기둥이 있는 경우
-				((y + 1 < N && x + 1 < N) && map[y + 1][x + 1][0] != 0) || // 오른쪽 끝에 기둥이 있는 경우
+			if ((y - 1 >= 0 && x + 1 < N) && map[y - 1][x + 1][0] != 0 || // 왼쪽 끝에 기둥이 있는 경우
+				(x - 1 >= 0 && map[y][x - 1][0] != 0) || // 오른쪽 끝에 기둥이 있는 경우
 				((x - 1 >= 0 && x + 1 < N) && (map[y][x - 1][1] != 0 && map[y][x + 1][1] != 0))) { // 양 옆에 보가 있는 경우
 				check = true;
 			}
