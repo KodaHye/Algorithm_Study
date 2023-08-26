@@ -4,7 +4,6 @@ import java.util.StringTokenizer;
 
 public class boj14391 {
     static int N, M, map[][], result;
-    static boolean sel[];
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,7 +14,6 @@ public class boj14391 {
         M = Integer.parseInt(st.nextToken());
 
         map = new int[N][M];
-        sel = new boolean[N * M];
 
         for(int r = 0; r < N; r++) {
             String input = br.readLine();
@@ -23,58 +21,40 @@ public class boj14391 {
                 map[r][c] = input.charAt(c) - '0';
             }
         }
-        func(0);
 
-        System.out.println(result);
-    }
-
-    private static void func(int k) {
-        if(k == N * M) {
-
-            int tmp = 0;
-            String str = "";
-            boolean check[] = new boolean[N * M];
-
-
-            for(int i = 0; i < sel.length; i++) {
-                if(!sel[i] && !check[i]) {
-
-                    int count = 0;
-
-                    while(count < M - (i % M) && !sel[i + count] && !sel[i + count]) {
-                        check[i + count] = true;
-                        str += map[(i + count) / M][(i + count) % M];
-                        count++;
+        for(int s = 0; s < (1 << N * M); s++) {
+            int sum = 0;
+            for(int r = 0; r < N; r++) {
+                int cur = 0;
+                for(int c = 0; c < M; c++) {
+                    int k = r * M + c;
+                    if((s & (1 << k)) == 0) cur = cur * 10 + map[r][c];
+                    else {
+                        sum += cur;
+                        cur = 0;
                     }
-                    tmp += Integer.parseInt(str);
                 }
 
-                if(sel[i] && !check[i]) {
-                    if(!str.equals("")) tmp += Integer.parseInt(str);
-                    str = String.valueOf(map[i / M][i % M]);
-                    check[i] = true;
-
-                    int idx = i;
-                    while((idx + M) < sel.length && !check[idx + M] && sel[idx + M]) {
-                        idx += M;
-                        str += map[idx / M][idx % M];
-                        check[idx] = true;
-                    }
-
-                    tmp += Integer.parseInt(str);
-                }
-
-                str = "";
+                sum += cur;
             }
-            result = Math.max(result, tmp);
 
-            return;
+            for(int c = 0; c < M; c++) {
+                int cur = 0;
+                for(int r = 0; r < N; r++) {
+                    int k = r * M + c;
+                    if((s & (1 << k)) != 0) cur = cur * 10 + map[r][c];
+                    else {
+                        sum += cur;
+                        cur = 0;
+                    }
+                }
+
+                sum += cur;
+            }
+
+            result = Math.max(result, sum);
         }
 
-        sel[k] = false;
-        func(k + 1);
-
-        sel[k] = true;
-        func(k + 1);
+        System.out.println(result);
     }
 }
