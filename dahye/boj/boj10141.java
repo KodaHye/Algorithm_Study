@@ -1,3 +1,5 @@
+package dahye.boj;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
