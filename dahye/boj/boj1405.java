@@ -5,16 +5,9 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class boj1405 {
-    static class Point {
-        int r, c;
-        public Point(int r, int c) {
-            this.r = r;
-            this.c = c;
-        }
-    }
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
-    static int N, per[], sel[];
+    static int N, per[];
     static int dr[] = {0, 0, 1, -1};
     static int dc[] = {1, -1, 0, 0};
     static double percent;
@@ -24,23 +17,20 @@ public class boj1405 {
 
         N = Integer.parseInt(st.nextToken());
         per = new int[4];
-        sel = new int[N];
         visit = new boolean[29][29];
 
-        Point init = new Point(14, 14);
-
-        visit[init.r][init.c] = true;
+        visit[14][14] = true;
 
         for(int i = 0; i < 4; i++) {
             per[i] = Integer.parseInt(st.nextToken());
         }
 
-        func(0, init, 1);
+        func(0, 14, 14, 1);
 
         System.out.println(percent);
     }
 
-    static void func(int k, Point point, double result) {
+    static void func(int k, int r, int c, double result) {
         if(k == N) {
 
             percent += result;
@@ -50,16 +40,14 @@ public class boj1405 {
 
 
         for(int i = 0; i < 4; i++) {
+            int nr = r + dr[i];
+            int nc = c + dc[i];
 
-            sel[k] = i;
+            if(visit[nr][nc] || per[i] == 0) continue;
+            visit[nr][nc] = true;
 
-            Point next = new Point(point.r + dr[i], point.c + dc[i]);
-
-            if(visit[next.r][next.c] || per[sel[k]] == 0) continue;
-            visit[next.r][next.c] = true;
-
-            func(k+ 1, next, result * per[sel[k]] / 100.0);
-            visit[next.r][next.c] = false;
+            func(k+ 1, nr, nc, result * per[i] / 100.0);
+            visit[nr][nc] = false;
         }
     }
 }
