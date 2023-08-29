@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class boj16928 {
     static int N, M, min;
@@ -37,9 +35,11 @@ public class boj16928 {
             snake.put(u, v);
         }
 
-        min = Integer.MAX_VALUE;
-        findMin(0, 1);
-        System.out.println(min);
+//        min = Integer.MAX_VALUE;
+//        findMin(0, 1);
+//        System.out.println(min);
+
+        findMinBfs();
     }
 
     static void findMin(int count, int currentIndex){
@@ -58,6 +58,42 @@ public class boj16928 {
             }
 
             findMin(count+1, nextIndex);
+        }
+    }
+
+    static class Point{
+        int count, currentIndex;
+        Point(int count, int currentIndex){
+            this.count = count;
+            this.currentIndex = currentIndex;
+        }
+    }
+    static void findMinBfs(){
+        Queue<Point> queue = new LinkedList<>();
+        boolean[] visit = new boolean[101];
+
+        queue.offer(new Point(0, 1));
+        visit[1] = true;
+
+        while (!queue.isEmpty()){
+            Point p = queue.poll();
+
+            for(int i = 1; i<= 6; i++){
+                int nextIndex = p.currentIndex + i;
+                if(laddle.containsKey(nextIndex)){
+                    nextIndex = laddle.get(p.currentIndex + i);
+                }else if(snake.containsKey(nextIndex)){
+                    nextIndex = snake.get(p.currentIndex + i);
+                }
+
+                if(visit[nextIndex] || nextIndex > 100) continue;
+                visit[nextIndex] = true;
+                if(nextIndex == 100){
+                    System.out.println(p.count + 1);
+                    return;
+                }
+                queue.offer(new Point(p.count + 1, nextIndex));
+            }
         }
     }
 }
