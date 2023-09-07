@@ -57,7 +57,7 @@
 | 1주차 - 구현                    | [기둥과 보 설치](https://school.programmers.co.kr/learn/courses/30/lessons/60061), [스킬트리](https://school.programmers.co.kr/learn/courses/30/lessons/49993) |
 | 2주차 - 완전탐색 (BFS, DFS, 백트래킹) | [수식 최대화](https://school.programmers.co.kr/learn/courses/30/lessons/67257), [네트워크](https://school.programmers.co.kr/learn/courses/30/lessons/43162) |
 | 3주차 - 자료구조                  |   [다리를 지나는 트럭](https://school.programmers.co.kr/learn/courses/30/lessons/42583), [길 찾기 게임](https://school.programmers.co.kr/learn/courses/30/lessons/42892) |
-| 4주차 - DP                    |   [정수 삼각형] (https://school.programmers.co.kr/learn/courses/30/lessons/43105), [회사 문화 1](https://www.acmicpc.net/problem/14267) |
+| 4주차 - DP                    |   [정수 삼각형](https://school.programmers.co.kr/learn/courses/30/lessons/43105), [회사 문화 1](https://www.acmicpc.net/problem/14267) |
 | 5주차 - 이분탐색                  |                                                                                                                                                      |
 | 6주차 - 투포인터, 누적합             |                                                                                                                                                      |
 | 7주차 - 그래프                   |                                                                                                                                                      |
