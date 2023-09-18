@@ -63,7 +63,7 @@ public class 알고스팟 {
 		PQ.add(new Node(0, 0, 0));
 
 		dist[0][0] = 0;
-		visited[0][0] = true;
+//		visited[0][0] = true;
 
 		while (!PQ.isEmpty()) {
 			Node n = PQ.poll();
