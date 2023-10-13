@@ -7,6 +7,10 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
+/*
+특정한 최단 경로
+ */
+
 public class boj1504 {
     static int INF = 200000000;
     static class Node implements Comparable<Node> {
